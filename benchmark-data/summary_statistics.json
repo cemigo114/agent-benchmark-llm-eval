@@ -1,0 +1,83 @@
+{
+  "overall": {
+    "total_conversations": 70,
+    "overall_success_rate": 0.9714,
+    "evaluation_duration": "Simulated evaluation"
+  },
+  "by_model": {
+    "gpt5": {
+      "total_conversations": 35,
+      "success_count": 34,
+      "success_rate": 0.9714,
+      "avg_duration_seconds": 28.22,
+      "avg_conversation_turns": 3.5,
+      "total_violations": 3,
+      "violation_rate": 0.0857,
+      "avg_quality_ratings": {
+        "relevance": 0.929,
+        "completeness": 0.904,
+        "clarity": 0.949,
+        "helpfulness": 0.912
+      }
+    },
+    "claude_opus_4_1": {
+      "total_conversations": 35,
+      "success_count": 34,
+      "success_rate": 0.9714,
+      "avg_duration_seconds": 31.1,
+      "avg_conversation_turns": 3.4,
+      "total_violations": 4,
+      "violation_rate": 0.1143,
+      "avg_quality_ratings": {
+        "relevance": 0.913,
+        "completeness": 0.929,
+        "clarity": 0.962,
+        "helpfulness": 0.936
+      }
+    }
+  },
+  "by_scenario": {
+    "retail_001": {
+      "total_conversations": 10,
+      "success_count": 10,
+      "success_rate": 1.0,
+      "avg_duration_seconds": 29.06
+    },
+    "retail_002": {
+      "total_conversations": 10,
+      "success_count": 10,
+      "success_rate": 1.0,
+      "avg_duration_seconds": 28.03
+    },
+    "retail_003": {
+      "total_conversations": 10,
+      "success_count": 10,
+      "success_rate": 1.0,
+      "avg_duration_seconds": 29.98
+    },
+    "retail_004": {
+      "total_conversations": 10,
+      "success_count": 9,
+      "success_rate": 0.9,
+      "avg_duration_seconds": 30.83
+    },
+    "retail_005": {
+      "total_conversations": 10,
+      "success_count": 10,
+      "success_rate": 1.0,
+      "avg_duration_seconds": 29.54
+    },
+    "retail_006": {
+      "total_conversations": 10,
+      "success_count": 9,
+      "success_rate": 0.9,
+      "avg_duration_seconds": 30.65
+    },
+    "retail_007": {
+      "total_conversations": 10,
+      "success_count": 10,
+      "success_rate": 1.0,
+      "avg_duration_seconds": 29.52
+    }
+  }
+}
