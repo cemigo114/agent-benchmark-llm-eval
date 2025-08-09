@@ -47,15 +47,12 @@ We implemented a comprehensive evaluation framework based on the τ-bench method
 
 ### Overall Performance
 
-```
-┌─────────────────────┬──────────┬──────────────────┐
-│ Metric              │ GPT-5    │ Claude Opus 4.1  │
-├─────────────────────┼──────────┼──────────────────┤
-│ Success Rate        │ 42.9%    │ 57.1%           │         │
-│ Scenarios Won       │ 3        │ 4               │
-│ System Reliability  │ 100%     │ 100%            │
-└─────────────────────┴──────────┴──────────────────┘
-```
+| Metric   | GPT-5  |  Opus-4.1 |
+|----------|--------|-----------|
+| Success Rate  | 42.9% | 57.1%  |
+| Scenarios Won | 3     |  4     |
+| System Reliability | 100%  | 100%  |
+
 
 ### Quality Metrics Breakdown
 
