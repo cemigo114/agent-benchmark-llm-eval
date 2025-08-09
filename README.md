@@ -156,7 +156,7 @@ Our evaluation framework is built on:
 
 ### Reproducibility
 
-All evaluation code and data are available in this [GitHub repository](https://github.com/cemigo114/agent-benchmark-llm-eval):
+All evaluation code and data are available in [https://github.com/cemigo114/agent-benchmark-llm-eval](link)
 
 ##  Methodology Deep Dive
 
@@ -222,11 +222,6 @@ Given GPT5's rate limit, this study has only 35 conversations per model (seven s
 3. OpenAI. (2025). "https://openai.com/index/introducing-gpt-5/"
 4. Anthropic. (2025). "https://www.anthropic.com/claude/opus"
 
-##  Data Availability
-
-All evaluation data, code, and detailed results are available at:
-- **Repository**: [https://github.com/cemigo114/agent-benchmark-llm-eval](link)
-- **Reproducibility**: Complete evaluation environment provided
 
 ---
 
