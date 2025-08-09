@@ -1,6 +1,6 @@
 # GPT-5 vs Claude Opus 4.1: A Comprehensive Agent Evaluation Study
 
-*Published: August 2025 | Author: Yuchen Fama
+*Published: August 9, 2025 | Author: Yuchen Fama
 
 The latest generation of LLMs recently released by Anthropic and OpenAI promises unprecedented capabilities in real-world applications. But how do they actually perform when deployed as agents handling complex, multi-step tasks? We conducted a comprehensive evaluation comparing OpenAI's GPT-5 and Anthropic's Claude Opus 4.1 using the τ-bench methodology, focusing on tool-agent-user interactions in real-world use cases.
 
@@ -120,7 +120,7 @@ Both models excelled at:
 - Detailed explanations
 - Thorough consideration of alternatives
 
-## 📈 Statistical Analysis
+##  Statistical Analysis
 
 ### Pass@K Reliability Metrics
 
@@ -147,7 +147,7 @@ The 14.2% performance difference favoring Claude Opus 4.1 is statistically signi
 
 
 
-## 🔧 Technical Implementation
+##  Technical Implementation
 
 ### Framework Architecture
 
@@ -160,12 +160,6 @@ Our evaluation framework is built on:
 ### Reproducibility
 
 All evaluation code and data are available in this [GitHub repository](https://github.com/cemigo114/agent-benchmark-llm-eval):
-
-```bash
-git clone https://github.com/example/llm-agent-evaluation
-cd llm-agent-evaluation
-python main.py --models gpt5 claude_opus_4_1 --trials 5
-```
 
 ##  Methodology Deep Dive
 
@@ -224,14 +218,14 @@ Given GPT5's rate limit, this study has only 35 conversations per model (seven s
 
 ---
 
-## 📖 References
+##  References
 
 1. Wu, J. et al. (2024). "τ-bench: A Benchmark for Tool-Agent-User Interaction in Real World Domains." *arXiv preprint arXiv:2406.12045*
 2. Lehmann, E. L., & Romano, J. P. (2022). Testing Statistical Hypotheses (3rd ed.)
 3. OpenAI. (2025). "https://openai.com/index/introducing-gpt-5/"
 4. Anthropic. (2025). "https://www.anthropic.com/claude/opus"
 
-## 📊 Data Availability
+##  Data Availability
 
 All evaluation data, code, and detailed results are available at:
 - **Repository**: [https://github.com/cemigo114/agent-benchmark-llm-eval](link)
