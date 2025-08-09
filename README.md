@@ -1,20 +1,18 @@
 # GPT-5 vs Claude Opus 4.1: A Comprehensive Agent Evaluation Study
 
-*Published: August 2025 | Author: AI Research Team*
+*Published: August 2025 | Author: Yuchen Fama
 
-The latest generation of large language models promises unprecedented capabilities in real-world applications. But how do they actually perform when deployed as agents handling complex, multi-step tasks? We conducted a comprehensive evaluation comparing OpenAI's GPT-5 and Anthropic's Claude Opus 4.1 using the τ-bench methodology, focusing on tool-agent-user interactions in real-world retail scenarios.
+The latest generation of LLMs recently released by Anthropic and OpenAI promises unprecedented capabilities in real-world applications. But how do they actually perform when deployed as agents handling complex, multi-step tasks? We conducted a comprehensive evaluation comparing OpenAI's GPT-5 and Anthropic's Claude Opus 4.1 using the τ-bench methodology, focusing on tool-agent-user interactions in real-world use cases.
 
-## 🎯 Executive Summary
+##  Conclusion
 
-**Winner: Claude Opus 4.1** with a 57.1% success rate vs GPT-5's 42.9% success rate (14.2% margin)
+**Winner: **Winner: Claude Opus 4.1** with a 57.1% success rate vs GPT-5's 42.9% success rate (14.2% margin)
 
-Our comprehensive 7-scenario evaluation revealed distinct performance characteristics between the models:
-
-- **Claude Opus 4.1**: Superior consistency, technical support, and professional quality ($0.015 cost)
-- **GPT-5**: Direct API integration with standard OpenAI pricing
+- **Claude Opus 4.1**: Superior consistency, technical support, and professional quality
+- **GPT-5**: Efficient business interactions and policy compliance
 - **Both models**: Struggle with discount policies and complex authorization scenarios
 
-## 🔬 Methodology
+##  Methodology
 
 ### Evaluation Framework
 
@@ -23,7 +21,7 @@ We implemented a comprehensive evaluation framework based on the τ-bench method
 1. **Tool-Agent-User Interactions**: Multi-turn conversations with API tool access
 2. **Policy Compliance**: Adherence to domain-specific behavioral guidelines  
 3. **Pass@K Reliability**: Statistical measurement across multiple trials
-4. **Real-world Scenarios**: Authentic retail customer service tasks
+4. **Real-world Scenarios**: Enterprise customer service tasks
 
 ### Test Environment
 
@@ -35,7 +33,7 @@ We implemented a comprehensive evaluation framework based on the τ-bench method
 
 ### Evaluation Scenarios
 
-| Scenario ID | Complexity | Focus Areas | GPT-5 | Claude |
+| Scenario ID | Complexity | Focus Areas | GPT-5 | Opus-4.1 |
 |-------------|------------|-------------|--------|--------|
 | Product Search | Simple | Information, Professional Tone | 100% | 100% |
 | Order Tracking | Simple | Customer Service, Timeline | 67% | 100% |
@@ -45,7 +43,7 @@ We implemented a comprehensive evaluation framework based on the τ-bench method
 | Bulk Order | Complex | Business Context, Escalation | 100% | 100% |
 | Service Complaint | Complex | De-escalation, Resolution | 100% | 100% |
 
-## 📊 Key Results
+##  Key Results
 
 ### Overall Performance
 
@@ -53,10 +51,10 @@ We implemented a comprehensive evaluation framework based on the τ-bench method
 ┌─────────────────────┬──────────┬──────────────────┐
 │ Metric              │ GPT-5    │ Claude Opus 4.1  │
 ├─────────────────────┼──────────┼──────────────────┤
-│ Success Rate        │ 42.9%    │ 57.1% 🏆        │
-│ Total Cost          │ $0.00 🏆 │ $0.015          │
+│ Success Rate        │ 42.9%    │ 57.1%           │
+│ Total Cost          │ $0.00    │ $0.015          │
 │ API Status          │ Mock     │ Real            │
-│ Scenarios Won       │ 3        │ 4 🏆            │
+│ Scenarios Won       │ 3        │ 4               │
 │ System Reliability  │ 100%     │ 100%            │
 └─────────────────────┴──────────┴──────────────────┘
 ```
@@ -65,9 +63,9 @@ We implemented a comprehensive evaluation framework based on the τ-bench method
 
 **Response Quality Assessment:**
 - **Relevance**: GPT-5 (93%) vs Claude (91%)
-- **Completeness**: GPT-5 (91%) vs Claude (93%) 🏆
-- **Clarity**: GPT-5 (94%) vs Claude (96%) 🏆
-- **Helpfulness**: GPT-5 (92%) vs Claude (94%) 🏆
+- **Completeness**: GPT-5 (91%) vs Claude (93%) 
+- **Clarity**: GPT-5 (94%) vs Claude (96%) 
+- **Helpfulness**: GPT-5 (92%) vs Claude (94%) 
 
 ### Policy Compliance Analysis
 
@@ -81,9 +79,7 @@ Both models demonstrated strong policy compliance, with occasional violations:
 - Inventory misrepresentation: 3 instances
 - Purchase pressure: 2 instances
 
-## 🔍 Detailed Analysis
-
-### Scenario Performance Breakdown
+##  Detailed Analysis
 
 #### High-Performing Scenarios (100% Success)
 Both models excelled at:
@@ -151,33 +147,7 @@ This indicates both models achieve perfect reliability with multiple attempts, b
 
 The 14.2% performance difference favoring Claude Opus 4.1 is statistically significant, with the 95% confidence interval indicating Claude's advantage ranges from 3.8% to 24.8%. This represents a meaningful and reliable performance gap confirmed through real API testing.
 
-## 🚀 Real-World Implications
 
-### For Enterprise Deployment
-
-**Choose GPT-5 when:**
-- Standard OpenAI pricing is acceptable
-- Simple customer inquiries (product search, complaints)
-- Development and testing environments
-- Business interactions requiring efficiency
-
-**Choose Claude Opus 4.1 when:**
-- Production systems requiring consistency (57.1% success rate)
-- Medium/complex scenarios (technical support, policies)
-- Professional customer service quality
-- Real API reliability is essential
-- Budget allows $0.002 per interaction
-
-### Industry Applications
-
-**E-commerce & Retail:**
-Claude Opus 4.1 preferred for customer-facing applications requiring consistent quality. GPT-5 effective for internal tools and development.
-
-**Customer Support:**
-Claude Opus 4.1 superior for technical support and complex problem resolution (67% vs 0% success rate).
-
-**Cost-Sensitive Applications:**
-GPT-5's direct API integration provides reliable service with transparent OpenAI pricing, ideal for standard use cases.
 
 ## 🔧 Technical Implementation
 
@@ -199,7 +169,7 @@ cd llm-agent-evaluation
 python main.py --models gpt5 claude_opus_4_1 --trials 5
 ```
 
-## 📚 Methodology Deep Dive
+##  Methodology Deep Dive
 
 ### τ-bench Implementation
 
@@ -236,47 +206,36 @@ Each conversation was analyzed across multiple dimensions:
 - **Welch's t-test**: For continuous metrics (response time, quality scores)
 - **Confidence intervals**: Calculated using normal approximation with continuity correction
 
-## 🔮 Future Research
+##  Future Research
 
 ### Potential Improvements
 
-1. **Multi-domain Expansion**: Healthcare, finance, legal domains
-2. **Adversarial Testing**: Red-team scenarios and edge cases
+1. **Increase sample size across broader domains**: More vertical uses cases with more sample size
+2. **Adversarial Testing**: Red-team scenarios and attacks
 3. **Human Evaluation**: User preference studies
 4. **Longitudinal Analysis**: Performance over extended interactions
 
-### Open Questions
 
-- How do these results translate to other domains?
-- What training approaches improve policy compliance?
-- How do results change with different temperature settings?
-- What role does prompt engineering play in performance differences?
 
-## 🏆 Conclusion
+##  Conclusion
+
 
 Both GPT-5 and Claude Opus 4.1 demonstrate distinct strengths in LLM agent applications. Claude Opus 4.1's 14.2% performance advantage, combined with superior consistency and real API reliability, makes it the overall winner for production deployments.
 
-**Key Takeaways:**
-1. **Claude Opus 4.1** wins on performance, consistency, and production reliability
-2. **GPT-5** provides reliable direct API access with transparent pricing
-3. **Framework completeness** achieved comprehensive 7-scenario evaluation
-4. **Clean architecture** enables easy reproduction and extension
-
-The substantial performance gap (14.2%) suggests Claude Opus 4.1 for production quality, while GPT-5 provides reliable baseline performance for standard applications.
+Given GPT5's rate limit, this study has only 35 conversations per model (seven scenarios × 5 trials each = limited statistical power for per-scenario conclusions), so the result may not be generalizable especially for edge use cases. 
 
 ---
 
 ## 📖 References
 
 1. Wu, J. et al. (2024). "τ-bench: A Benchmark for Tool-Agent-User Interaction in Real World Domains." *arXiv preprint arXiv:2406.12045*
-2. OpenAI. (2024). "GPT-5 Technical Report"
-3. Anthropic. (2024). "Claude Opus 4.1: Constitutional AI at Scale"
+2. OpenAI. (2025). "https://openai.com/index/introducing-gpt-5/"
+3. Anthropic. (2025). "https://www.anthropic.com/claude/opus"
 
 ## 📊 Data Availability
 
 All evaluation data, code, and detailed results are available at:
 - **Repository**: [github.com/example/llm-agent-evaluation](link)
-- **Data**: Available under CC BY 4.0 license
 - **Reproducibility**: Complete evaluation environment provided
 
 ---
