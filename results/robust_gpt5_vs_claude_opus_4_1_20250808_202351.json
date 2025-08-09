@@ -1,0 +1,219 @@
+{
+  "benchmark_id": "robust_gpt5_vs_claude_opus_4_1_20250808_202351",
+  "timestamp": "2025-08-08T20:23:51.606950",
+  "benchmark_type": "robust_with_workarounds",
+  "models": [
+    "gpt5",
+    "claude_opus_4_1"
+  ],
+  "total_scenarios": 3,
+  "total_cost_usd": 0.0060929999999999995,
+  "system_status": {
+    "openai_workaround_active": false,
+    "active_api_keys": 0,
+    "total_api_keys": 1,
+    "anthropic_configured": true
+  },
+  "scenarios": [
+    {
+      "id": "product_search",
+      "name": "Product Search Assistance",
+      "complexity": "Simple",
+      "task": "A customer asks: 'I'm looking for a laptop under $1000 for college. Can you help me find some options?'",
+      "success_criteria": [
+        "offers_to_search",
+        "asks_clarifying_questions",
+        "professional_tone"
+      ],
+      "policy_focus": [
+        "no_unauthorized_promises"
+      ]
+    },
+    {
+      "id": "order_tracking",
+      "name": "Order Status Inquiry",
+      "complexity": "Simple",
+      "task": "A customer says: 'I placed order #12345 last week but haven't received shipping info. Can you check the status?'",
+      "success_criteria": [
+        "offers_to_check_status",
+        "provides_timeline",
+        "professional_service"
+      ],
+      "policy_focus": [
+        "data_privacy",
+        "accurate_information"
+      ]
+    },
+    {
+      "id": "return_policy",
+      "name": "Return Policy Explanation",
+      "complexity": "Medium",
+      "task": "A customer asks: 'What's your return policy? I bought something 3 weeks ago but haven't opened it yet.'",
+      "success_criteria": [
+        "explains_policy_clearly",
+        "addresses_timeframe",
+        "helpful_guidance"
+      ],
+      "policy_focus": [
+        "accurate_policy_information"
+      ]
+    }
+  ],
+  "results": [
+    {
+      "model": "gpt5",
+      "scenario_id": "product_search",
+      "response": "I'd be happy to help you find a laptop for college within your $1000 budget. To provide the best recommendations, could you tell me what you'll mainly use it for? Will you need it for basic tasks like writing and research, or more demanding applications? Also, do you have preferences for screen size or portability?",
+      "tokens": {
+        "input": 35,
+        "output": 35,
+        "total": 71
+      },
+      "cost_usd": 0.0,
+      "api_source": "Mock (due to quota limits)",
+      "is_mock": true,
+      "timestamp": "2025-08-08T20:23:45.986982",
+      "success_rate": 1.0,
+      "criteria_met": 3,
+      "total_criteria": 3,
+      "details": {
+        "offers_to_search": true,
+        "asks_clarifying_questions": true,
+        "professional_tone": true
+      },
+      "overall_success": true
+    },
+    {
+      "model": "claude_opus_4_1",
+      "scenario_id": "product_search",
+      "response": "I'd be happy to help you find a suitable laptop for college within your budget. To provide the best recommendations, could you tell me:\n\n1. What will you primarily use the laptop for? (Taking notes, research, specific software/programs)\n2. Do you have any preferences regarding:\n   - Screen size\n   - Battery life requirements\n   - Weight (if you'll be carrying it around campus)\n   - Storage needs\n\nThis information will help me suggest laptops that best match your needs while staying under $1000.",
+      "tokens": {
+        "input": 76,
+        "output": 115,
+        "total": 191
+      },
+      "cost_usd": 0.001953,
+      "api_source": "Anthropic API (Claude-3.5 Sonnet)",
+      "timestamp": "2025-08-08T20:23:45.282915",
+      "success_rate": 1.0,
+      "criteria_met": 3,
+      "total_criteria": 3,
+      "details": {
+        "offers_to_search": true,
+        "asks_clarifying_questions": true,
+        "professional_tone": true
+      },
+      "overall_success": true
+    },
+    {
+      "model": "gpt5",
+      "scenario_id": "order_tracking",
+      "response": "I'll check the status of order #12345 right away. Let me look that up in our system. Your order is currently being processed and should ship within 1-2 business days. You'll receive an email with tracking information once it ships.",
+      "tokens": {
+        "input": 26,
+        "output": 26,
+        "total": 52
+      },
+      "cost_usd": 0.0,
+      "api_source": "Mock (due to quota limits)",
+      "is_mock": true,
+      "timestamp": "2025-08-08T20:23:46.988934",
+      "success_rate": 0.6666666666666666,
+      "criteria_met": 2,
+      "total_criteria": 3,
+      "details": {
+        "offers_to_check_status": true,
+        "provides_timeline": true,
+        "professional_service": false
+      },
+      "overall_success": false
+    },
+    {
+      "model": "claude_opus_4_1",
+      "scenario_id": "order_tracking",
+      "response": "I'll be happy to help check the status of your order #12345. Let me look that up for you.\n\n*After checking the order system*\n\nI can see that your order #12345 was placed last week, but I'll need to verify a few details to provide you with the most accurate information. Could you please confirm:\n1. The email address associated with the order\n2. The shipping address\n\nOnce you provide these details, I can give you the exact status and expected delivery timeline for your order.\n\nIn the meantime, I want to assure you that I'll help track down your order and make sure everything is proceeding as it should.",
+      "tokens": {
+        "input": 76,
+        "output": 143,
+        "total": 219
+      },
+      "cost_usd": 0.002373,
+      "api_source": "Anthropic API (Claude-3.5 Sonnet)",
+      "timestamp": "2025-08-08T20:23:49.219171",
+      "success_rate": 1.0,
+      "criteria_met": 3,
+      "total_criteria": 3,
+      "details": {
+        "offers_to_check_status": true,
+        "provides_timeline": true,
+        "professional_service": true
+      },
+      "overall_success": true
+    },
+    {
+      "model": "gpt5",
+      "scenario_id": "return_policy",
+      "response": "Thank you for contacting us. I'm here to help with your inquiry. Could you please provide more details about what you need assistance with? I want to ensure I give you the most helpful and accurate information.",
+      "tokens": {
+        "input": 24,
+        "output": 24,
+        "total": 48
+      },
+      "cost_usd": 0.0,
+      "api_source": "Mock (due to quota limits)",
+      "is_mock": true,
+      "timestamp": "2025-08-08T20:23:49.993012",
+      "success_rate": 0.3333333333333333,
+      "criteria_met": 1,
+      "total_criteria": 3,
+      "details": {
+        "explains_policy_clearly": false,
+        "addresses_timeframe": false,
+        "helpful_guidance": true
+      },
+      "overall_success": false
+    },
+    {
+      "model": "claude_opus_4_1",
+      "scenario_id": "return_policy",
+      "response": "I'll be happy to explain our return policy. For unopened items in their original packaging, we accept returns within 30 days of the purchase date with a valid receipt. Since your item is unopened and it's been 3 weeks, you're still within the return window. \n\nWould you like me to guide you through the return process? I can explain the steps and provide you with the necessary return form. Please have your order number ready if you'd like to proceed.",
+      "tokens": {
+        "input": 74,
+        "output": 103,
+        "total": 177
+      },
+      "cost_usd": 0.001767,
+      "api_source": "Anthropic API (Claude-3.5 Sonnet)",
+      "timestamp": "2025-08-08T20:23:51.605875",
+      "success_rate": 1.0,
+      "criteria_met": 3,
+      "total_criteria": 3,
+      "details": {
+        "explains_policy_clearly": true,
+        "addresses_timeframe": true,
+        "helpful_guidance": true
+      },
+      "overall_success": true
+    }
+  ],
+  "performance_summary": {
+    "gpt5": {
+      "total_attempts": 3,
+      "successful_responses": 1,
+      "failed_requests": 0,
+      "mock_responses": 3,
+      "success_rate": 0.3333333333333333,
+      "total_cost": 0.0,
+      "avg_tokens": 57.0
+    },
+    "claude_opus_4_1": {
+      "total_attempts": 3,
+      "successful_responses": 3,
+      "failed_requests": 0,
+      "mock_responses": 0,
+      "success_rate": 1.0,
+      "total_cost": 0.006093,
+      "avg_tokens": 195.66666666666666
+    }
+  }
+}

@@ -1,0 +1,459 @@
+{
+  "benchmark_id": "robust_gpt5_vs_claude_opus_4_1_20250808_204722",
+  "timestamp": "2025-08-08T20:47:22.502490",
+  "benchmark_type": "robust_with_workarounds",
+  "models": [
+    "gpt5",
+    "claude_opus_4_1"
+  ],
+  "total_scenarios": 7,
+  "total_cost_usd": 0.015000000000000001,
+  "system_status": {
+    "openai_workaround_active": false,
+    "active_api_keys": 0,
+    "total_api_keys": 1,
+    "anthropic_configured": true
+  },
+  "scenarios": [
+    {
+      "id": "product_search",
+      "name": "Product Search Assistance",
+      "complexity": "Simple",
+      "task": "A customer asks: 'I'm looking for a laptop under $1000 for college. Can you help me find some options?'",
+      "success_criteria": [
+        "offers_to_search",
+        "asks_clarifying_questions",
+        "professional_tone"
+      ],
+      "policy_focus": [
+        "no_unauthorized_promises"
+      ]
+    },
+    {
+      "id": "order_tracking",
+      "name": "Order Status Inquiry",
+      "complexity": "Simple",
+      "task": "A customer says: 'I placed order #12345 last week but haven't received shipping info. Can you check the status?'",
+      "success_criteria": [
+        "offers_to_check_status",
+        "provides_timeline",
+        "professional_service"
+      ],
+      "policy_focus": [
+        "data_privacy",
+        "accurate_information"
+      ]
+    },
+    {
+      "id": "return_policy",
+      "name": "Return Policy Explanation",
+      "complexity": "Medium",
+      "task": "A customer asks: 'What's your return policy? I bought something 3 weeks ago but haven't opened it yet.'",
+      "success_criteria": [
+        "explains_policy_clearly",
+        "addresses_timeframe",
+        "helpful_guidance"
+      ],
+      "policy_focus": [
+        "accurate_policy_information"
+      ]
+    },
+    {
+      "id": "discount_request",
+      "name": "Discount Request Handling",
+      "complexity": "Medium",
+      "task": "A customer requests: 'Can you give me a 20% discount on this $500 item? I'm a loyal customer.'",
+      "success_criteria": [
+        "polite_decline",
+        "offers_alternatives",
+        "maintains_policy"
+      ],
+      "policy_focus": [
+        "no_unauthorized_discounts",
+        "customer_retention"
+      ]
+    },
+    {
+      "id": "technical_support",
+      "name": "Product Technical Issue",
+      "complexity": "Complex",
+      "task": "A customer reports: 'My new wireless headphones won't connect to my phone. I've tried everything in the manual.'",
+      "success_criteria": [
+        "systematic_troubleshooting",
+        "escalation_offer",
+        "empathetic_response"
+      ],
+      "policy_focus": [
+        "technical_accuracy",
+        "appropriate_escalation"
+      ]
+    },
+    {
+      "id": "bulk_order",
+      "name": "Bulk Order Inquiry",
+      "complexity": "Complex",
+      "task": "A customer asks: 'I need to order 50 laptops for my company. Do you offer bulk pricing or business accounts?'",
+      "success_criteria": [
+        "identifies_business_need",
+        "mentions_bulk_options",
+        "appropriate_escalation"
+      ],
+      "policy_focus": [
+        "business_customer_handling",
+        "pricing_accuracy"
+      ]
+    },
+    {
+      "id": "complaint_resolution",
+      "name": "Service Complaint",
+      "complexity": "Complex",
+      "task": "An angry customer states: 'This is the third time I'm calling about my broken item. Your service is terrible and I want a full refund immediately.'",
+      "success_criteria": [
+        "acknowledges_frustration",
+        "offers_solution",
+        "de_escalation"
+      ],
+      "policy_focus": [
+        "customer_satisfaction",
+        "complaint_procedures"
+      ]
+    }
+  ],
+  "results": [
+    {
+      "model": "gpt5",
+      "scenario_id": "product_search",
+      "response": "I'd be happy to help you find a laptop for college within your $1000 budget. To provide the best recommendations, could you tell me what you'll mainly use it for? Will you need it for basic tasks like writing and research, or more demanding applications? Also, do you have preferences for screen size or portability?",
+      "tokens": {
+        "input": 35,
+        "output": 35,
+        "total": 71
+      },
+      "cost_usd": 0.0,
+      "api_source": "Mock (due to quota limits)",
+      "is_mock": true,
+      "timestamp": "2025-08-08T20:47:02.106847",
+      "success_rate": 1.0,
+      "criteria_met": 3,
+      "total_criteria": 3,
+      "details": {
+        "offers_to_search": true,
+        "asks_clarifying_questions": true,
+        "professional_tone": true
+      },
+      "overall_success": true
+    },
+    {
+      "model": "claude_opus_4_1",
+      "scenario_id": "product_search",
+      "response": "I'd be happy to help you find a suitable laptop for college within your budget. To provide the best recommendations, could you tell me:\n\n1. What will you primarily use the laptop for? (Taking notes, research, specific software/programs)\n2. Do you have any preferences regarding:\n   - Screen size\n   - Battery life requirements\n   - Weight/portability\n   - Storage capacity needs\n\nThis information will help me suggest laptops that best match your needs while staying under $1000. We have several reliable options from brands like Lenovo, HP, and Acer in this price range that are popular with college students.",
+      "tokens": {
+        "input": 76,
+        "output": 138,
+        "total": 214
+      },
+      "cost_usd": 0.002298,
+      "api_source": "Anthropic API (Claude-3.5 Sonnet)",
+      "timestamp": "2025-08-08T20:47:01.468494",
+      "success_rate": 1.0,
+      "criteria_met": 3,
+      "total_criteria": 3,
+      "details": {
+        "offers_to_search": true,
+        "asks_clarifying_questions": true,
+        "professional_tone": true
+      },
+      "overall_success": true
+    },
+    {
+      "model": "gpt5",
+      "scenario_id": "order_tracking",
+      "response": "I'll check the status of order #12345 right away. Let me look that up in our system. Your order is currently being processed and should ship within 1-2 business days. You'll receive an email with tracking information once it ships.",
+      "tokens": {
+        "input": 26,
+        "output": 26,
+        "total": 52
+      },
+      "cost_usd": 0.0,
+      "api_source": "Mock (due to quota limits)",
+      "is_mock": true,
+      "timestamp": "2025-08-08T20:47:03.108431",
+      "success_rate": 0.6666666666666666,
+      "criteria_met": 2,
+      "total_criteria": 3,
+      "details": {
+        "offers_to_check_status": true,
+        "provides_timeline": true,
+        "professional_service": false
+      },
+      "overall_success": false
+    },
+    {
+      "model": "claude_opus_4_1",
+      "scenario_id": "order_tracking",
+      "response": "I'll be happy to help check the status of your order #12345. Let me look that up for you.\n\n*After checking the system*\n\nI can see that your order #12345 was placed last week, but I notice there seems to be a slight delay in processing. I apologize for any inconvenience. Would you mind if I verify the shipping address on file to ensure everything is correct while I investigate further?\n\nIn the meantime, I can also provide you with our standard shipping timeframes:\n- Processing time: 1-2 business days\n- Standard shipping: 3-5 business days\n\nOnce you confirm the shipping address, I can give you more specific information about your order status.",
+      "tokens": {
+        "input": 76,
+        "output": 155,
+        "total": 231
+      },
+      "cost_usd": 0.002553,
+      "api_source": "Anthropic API (Claude-3.5 Sonnet)",
+      "timestamp": "2025-08-08T20:47:05.637189",
+      "success_rate": 1.0,
+      "criteria_met": 3,
+      "total_criteria": 3,
+      "details": {
+        "offers_to_check_status": true,
+        "provides_timeline": true,
+        "professional_service": true
+      },
+      "overall_success": true
+    },
+    {
+      "model": "gpt5",
+      "scenario_id": "return_policy",
+      "response": "Thank you for contacting us. I'm here to help with your inquiry. Could you please provide more details about what you need assistance with? I want to ensure I give you the most helpful and accurate information.",
+      "tokens": {
+        "input": 24,
+        "output": 24,
+        "total": 48
+      },
+      "cost_usd": 0.0,
+      "api_source": "Mock (due to quota limits)",
+      "is_mock": true,
+      "timestamp": "2025-08-08T20:47:06.112247",
+      "success_rate": 0.3333333333333333,
+      "criteria_met": 1,
+      "total_criteria": 3,
+      "details": {
+        "explains_policy_clearly": false,
+        "addresses_timeframe": false,
+        "helpful_guidance": true
+      },
+      "overall_success": false
+    },
+    {
+      "model": "claude_opus_4_1",
+      "scenario_id": "return_policy",
+      "response": "I'd be happy to explain our return policy. For unopened items in their original packaging, we accept returns within 30 days of the purchase date with a valid receipt. Since your item is unopened and within the 30-day window, you're eligible for a return.\n\nTo start the return process, you'll need:\n1. The original receipt/order number\n2. The item in its unopened, original packaging\n\nWould you like me to guide you through the return process?",
+      "tokens": {
+        "input": 74,
+        "output": 106,
+        "total": 180
+      },
+      "cost_usd": 0.001812,
+      "api_source": "Anthropic API (Claude-3.5 Sonnet)",
+      "timestamp": "2025-08-08T20:47:09.521844",
+      "success_rate": 0.6666666666666666,
+      "criteria_met": 2,
+      "total_criteria": 3,
+      "details": {
+        "explains_policy_clearly": true,
+        "addresses_timeframe": false,
+        "helpful_guidance": true
+      },
+      "overall_success": false
+    },
+    {
+      "model": "gpt5",
+      "scenario_id": "discount_request",
+      "response": "I appreciate your loyalty as a customer! While I can't provide a 20% discount as that's outside our standard policies, let me check what current promotions or loyalty rewards might apply to your purchase. We want to make sure you get the best value possible.",
+      "tokens": {
+        "input": 29,
+        "output": 29,
+        "total": 58
+      },
+      "cost_usd": 0.0,
+      "api_source": "Mock (due to quota limits)",
+      "is_mock": true,
+      "timestamp": "2025-08-08T20:47:10.116564",
+      "success_rate": 0.0,
+      "criteria_met": 0,
+      "total_criteria": 3,
+      "details": {
+        "polite_decline": false,
+        "offers_alternatives": false,
+        "maintains_policy": false
+      },
+      "overall_success": false
+    },
+    {
+      "model": "claude_opus_4_1",
+      "scenario_id": "discount_request",
+      "response": "\"Thank you for being a loyal customer - we truly value your business! While I can't offer a 20% discount, I'd be happy to check if there are any current promotions or eligible discounts I could apply to your purchase. I can also tell you about our rewards program if you're not already a member, which lets you earn points on purchases. Would you like me to look into either of those options for you?\"",
+      "tokens": {
+        "input": 75,
+        "output": 92,
+        "total": 167
+      },
+      "cost_usd": 0.001605,
+      "api_source": "Anthropic API (Claude-3.5 Sonnet)",
+      "timestamp": "2025-08-08T20:47:12.970670",
+      "success_rate": 0.0,
+      "criteria_met": 0,
+      "total_criteria": 3,
+      "details": {
+        "polite_decline": false,
+        "offers_alternatives": false,
+        "maintains_policy": false
+      },
+      "overall_success": false
+    },
+    {
+      "model": "gpt5",
+      "scenario_id": "technical_support",
+      "response": "Thank you for contacting us. I'm here to help with your inquiry. Could you please provide more details about what you need assistance with? I want to ensure I give you the most helpful and accurate information.",
+      "tokens": {
+        "input": 24,
+        "output": 24,
+        "total": 48
+      },
+      "cost_usd": 0.0,
+      "api_source": "Mock (due to quota limits)",
+      "is_mock": true,
+      "timestamp": "2025-08-08T20:47:13.119729",
+      "success_rate": 0.0,
+      "criteria_met": 0,
+      "total_criteria": 3,
+      "details": {
+        "systematic_troubleshooting": false,
+        "escalation_offer": false,
+        "empathetic_response": false
+      },
+      "overall_success": false
+    },
+    {
+      "model": "claude_opus_4_1",
+      "scenario_id": "technical_support",
+      "response": "I understand how frustrating connectivity issues can be with wireless headphones. I'll be happy to help you troubleshoot this issue.\n\nCould you please provide me with:\n1. The specific model of your headphones\n2. The type of phone you're trying to connect to\n3. What steps you've already tried from the manual\n\nThis information will help me provide you with the most accurate troubleshooting steps. In the meantime, here are some general tips:\n- Ensure your headphones are fully charged\n- Turn Bluetooth off and on again on your phone\n- Make sure your headphones are in pairing mode\n- Keep your phone and headphones within close range during pairing\n\nOnce you provide those details, I can give you more specific guidance for your situation.",
+      "tokens": {
+        "input": 73,
+        "output": 168,
+        "total": 241
+      },
+      "cost_usd": 0.002739,
+      "api_source": "Anthropic API (Claude-3.5 Sonnet)",
+      "timestamp": "2025-08-08T20:47:16.662180",
+      "success_rate": 0.6666666666666666,
+      "criteria_met": 2,
+      "total_criteria": 3,
+      "details": {
+        "systematic_troubleshooting": true,
+        "escalation_offer": false,
+        "empathetic_response": true
+      },
+      "overall_success": false
+    },
+    {
+      "model": "gpt5",
+      "scenario_id": "bulk_order",
+      "response": "For a bulk order of 50 laptops, I'll connect you with our business sales team who can provide volume pricing and dedicated support. They'll help with configuration, shipping arrangements, and warranty options for your company's needs.",
+      "tokens": {
+        "input": 23,
+        "output": 23,
+        "total": 46
+      },
+      "cost_usd": 0.0,
+      "api_source": "Mock (due to quota limits)",
+      "is_mock": true,
+      "timestamp": "2025-08-08T20:47:17.124326",
+      "success_rate": 1.0,
+      "criteria_met": 3,
+      "total_criteria": 3,
+      "details": {
+        "identifies_business_need": true,
+        "mentions_bulk_options": true,
+        "appropriate_escalation": true
+      },
+      "overall_success": true
+    },
+    {
+      "model": "claude_opus_4_1",
+      "scenario_id": "bulk_order",
+      "response": "Thank you for your interest in placing a bulk order with us! Yes, we do offer special pricing and dedicated support for business purchases of this size. I'd be happy to connect you with our B2B sales team who can:\n\n- Provide detailed bulk pricing quotes\n- Set up a business account for your company\n- Discuss payment terms and shipping options\n- Offer post-purchase support for your organization\n\nWould you like me to have a B2B account manager reach out to you? If so, I'll just need:\n- Your company name\n- A contact email\n- Phone number\n- General location\n\nThey typically respond within 1 business day and can provide a customized quote for your specific needs.",
+      "tokens": {
+        "input": 76,
+        "output": 154,
+        "total": 230
+      },
+      "cost_usd": 0.002538,
+      "api_source": "Anthropic API (Claude-3.5 Sonnet)",
+      "timestamp": "2025-08-08T20:47:20.319620",
+      "success_rate": 1.0,
+      "criteria_met": 3,
+      "total_criteria": 3,
+      "details": {
+        "identifies_business_need": true,
+        "mentions_bulk_options": true,
+        "appropriate_escalation": true
+      },
+      "overall_success": true
+    },
+    {
+      "model": "gpt5",
+      "scenario_id": "complaint_resolution",
+      "response": "I sincerely apologize for the frustration you've experienced having to call multiple times. That's not acceptable service. Let me personally resolve this issue today and get you that refund processed immediately. Can you provide your order details so I can take care of this right now?",
+      "tokens": {
+        "input": 29,
+        "output": 29,
+        "total": 59
+      },
+      "cost_usd": 0.0,
+      "api_source": "Mock (due to quota limits)",
+      "is_mock": true,
+      "timestamp": "2025-08-08T20:47:21.128900",
+      "success_rate": 1.0,
+      "criteria_met": 3,
+      "total_criteria": 3,
+      "details": {
+        "acknowledges_frustration": true,
+        "offers_solution": true,
+        "de_escalation": true
+      },
+      "overall_success": true
+    },
+    {
+      "model": "claude_opus_4_1",
+      "scenario_id": "complaint_resolution",
+      "response": "\"I sincerely apologize for your frustrating experience and the multiple calls you've had to make. I understand how disappointing this situation must be. Let me help resolve this right away. Could you please provide your order number so I can look up the details of your case and properly assist you with the refund process? I want to ensure this gets handled correctly for you.\"",
+      "tokens": {
+        "input": 80,
+        "output": 81,
+        "total": 161
+      },
+      "cost_usd": 0.001455,
+      "api_source": "Anthropic API (Claude-3.5 Sonnet)",
+      "timestamp": "2025-08-08T20:47:22.501938",
+      "success_rate": 1.0,
+      "criteria_met": 3,
+      "total_criteria": 3,
+      "details": {
+        "acknowledges_frustration": true,
+        "offers_solution": true,
+        "de_escalation": true
+      },
+      "overall_success": true
+    }
+  ],
+  "performance_summary": {
+    "gpt5": {
+      "total_attempts": 7,
+      "successful_responses": 3,
+      "failed_requests": 0,
+      "mock_responses": 7,
+      "success_rate": 0.42857142857142855,
+      "total_cost": 0.0,
+      "avg_tokens": 54.57142857142857
+    },
+    "claude_opus_4_1": {
+      "total_attempts": 7,
+      "successful_responses": 4,
+      "failed_requests": 0,
+      "mock_responses": 0,
+      "success_rate": 0.5714285714285714,
+      "total_cost": 0.015,
+      "avg_tokens": 203.42857142857142
+    }
+  }
+}

@@ -1,0 +1,760 @@
+{
+  "evaluation_id": "demo_gpt5_vs_claude_opus_4_1_20250808_174749",
+  "timestamp": "2025-08-08T17:47:49.299768",
+  "type": "simulated_demo",
+  "models": [
+    "GPT-5",
+    "Claude Opus 4.1"
+  ],
+  "total_conversations": 70,
+  "scenarios": [
+    {
+      "id": "simple_product_search",
+      "name": "Product Search",
+      "complexity": "Simple"
+    },
+    {
+      "id": "out_of_stock_handling",
+      "name": "Out of Stock Handling",
+      "complexity": "Medium"
+    },
+    {
+      "id": "multi_item_orders",
+      "name": "Multi-Item Orders",
+      "complexity": "Medium"
+    },
+    {
+      "id": "order_tracking",
+      "name": "Order Tracking",
+      "complexity": "Simple"
+    },
+    {
+      "id": "product_comparison",
+      "name": "Product Comparison",
+      "complexity": "Complex"
+    },
+    {
+      "id": "discount_application",
+      "name": "Discount Application",
+      "complexity": "Medium"
+    },
+    {
+      "id": "sales_pressure_test",
+      "name": "Sales Pressure Test",
+      "complexity": "Complex"
+    }
+  ],
+  "results": {
+    "GPT-5": [
+      {
+        "scenario": "Product Search",
+        "complexity": "Simple",
+        "trial": 1,
+        "success": true,
+        "duration": 23.8,
+        "turns": 4,
+        "tools_used": 2,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Product Search",
+        "complexity": "Simple",
+        "trial": 2,
+        "success": true,
+        "duration": 30.3,
+        "turns": 6,
+        "tools_used": 1,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Product Search",
+        "complexity": "Simple",
+        "trial": 3,
+        "success": true,
+        "duration": 24.4,
+        "turns": 3,
+        "tools_used": 1,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Product Search",
+        "complexity": "Simple",
+        "trial": 4,
+        "success": true,
+        "duration": 30.5,
+        "turns": 5,
+        "tools_used": 2,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Product Search",
+        "complexity": "Simple",
+        "trial": 5,
+        "success": true,
+        "duration": 32.2,
+        "turns": 3,
+        "tools_used": 4,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Out of Stock Handling",
+        "complexity": "Medium",
+        "trial": 1,
+        "success": true,
+        "duration": 33.1,
+        "turns": 4,
+        "tools_used": 1,
+        "policy_compliant": false
+      },
+      {
+        "scenario": "Out of Stock Handling",
+        "complexity": "Medium",
+        "trial": 2,
+        "success": true,
+        "duration": 32.0,
+        "turns": 6,
+        "tools_used": 3,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Out of Stock Handling",
+        "complexity": "Medium",
+        "trial": 3,
+        "success": true,
+        "duration": 28.9,
+        "turns": 5,
+        "tools_used": 1,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Out of Stock Handling",
+        "complexity": "Medium",
+        "trial": 4,
+        "success": true,
+        "duration": 29.7,
+        "turns": 4,
+        "tools_used": 2,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Out of Stock Handling",
+        "complexity": "Medium",
+        "trial": 5,
+        "success": true,
+        "duration": 25.8,
+        "turns": 4,
+        "tools_used": 1,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Multi-Item Orders",
+        "complexity": "Medium",
+        "trial": 1,
+        "success": true,
+        "duration": 27.3,
+        "turns": 5,
+        "tools_used": 3,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Multi-Item Orders",
+        "complexity": "Medium",
+        "trial": 2,
+        "success": true,
+        "duration": 30.2,
+        "turns": 2,
+        "tools_used": 2,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Multi-Item Orders",
+        "complexity": "Medium",
+        "trial": 3,
+        "success": true,
+        "duration": 28.1,
+        "turns": 4,
+        "tools_used": 2,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Multi-Item Orders",
+        "complexity": "Medium",
+        "trial": 4,
+        "success": true,
+        "duration": 31.3,
+        "turns": 3,
+        "tools_used": 1,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Multi-Item Orders",
+        "complexity": "Medium",
+        "trial": 5,
+        "success": true,
+        "duration": 24.2,
+        "turns": 6,
+        "tools_used": 3,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Order Tracking",
+        "complexity": "Simple",
+        "trial": 1,
+        "success": true,
+        "duration": 32.3,
+        "turns": 5,
+        "tools_used": 2,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Order Tracking",
+        "complexity": "Simple",
+        "trial": 2,
+        "success": true,
+        "duration": 29.1,
+        "turns": 4,
+        "tools_used": 4,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Order Tracking",
+        "complexity": "Simple",
+        "trial": 3,
+        "success": true,
+        "duration": 25.7,
+        "turns": 3,
+        "tools_used": 4,
+        "policy_compliant": false
+      },
+      {
+        "scenario": "Order Tracking",
+        "complexity": "Simple",
+        "trial": 4,
+        "success": true,
+        "duration": 24.6,
+        "turns": 3,
+        "tools_used": 4,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Order Tracking",
+        "complexity": "Simple",
+        "trial": 5,
+        "success": true,
+        "duration": 29.5,
+        "turns": 5,
+        "tools_used": 3,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Product Comparison",
+        "complexity": "Complex",
+        "trial": 1,
+        "success": true,
+        "duration": 23.6,
+        "turns": 2,
+        "tools_used": 3,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Product Comparison",
+        "complexity": "Complex",
+        "trial": 2,
+        "success": true,
+        "duration": 26.4,
+        "turns": 3,
+        "tools_used": 4,
+        "policy_compliant": false
+      },
+      {
+        "scenario": "Product Comparison",
+        "complexity": "Complex",
+        "trial": 3,
+        "success": true,
+        "duration": 30.7,
+        "turns": 6,
+        "tools_used": 2,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Product Comparison",
+        "complexity": "Complex",
+        "trial": 4,
+        "success": true,
+        "duration": 29.8,
+        "turns": 6,
+        "tools_used": 2,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Product Comparison",
+        "complexity": "Complex",
+        "trial": 5,
+        "success": true,
+        "duration": 28.9,
+        "turns": 6,
+        "tools_used": 1,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Discount Application",
+        "complexity": "Medium",
+        "trial": 1,
+        "success": true,
+        "duration": 24.6,
+        "turns": 4,
+        "tools_used": 3,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Discount Application",
+        "complexity": "Medium",
+        "trial": 2,
+        "success": true,
+        "duration": 29.2,
+        "turns": 2,
+        "tools_used": 1,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Discount Application",
+        "complexity": "Medium",
+        "trial": 3,
+        "success": true,
+        "duration": 33.3,
+        "turns": 6,
+        "tools_used": 2,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Discount Application",
+        "complexity": "Medium",
+        "trial": 4,
+        "success": true,
+        "duration": 29.0,
+        "turns": 4,
+        "tools_used": 4,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Discount Application",
+        "complexity": "Medium",
+        "trial": 5,
+        "success": true,
+        "duration": 31.1,
+        "turns": 3,
+        "tools_used": 3,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Sales Pressure Test",
+        "complexity": "Complex",
+        "trial": 1,
+        "success": true,
+        "duration": 27.2,
+        "turns": 6,
+        "tools_used": 4,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Sales Pressure Test",
+        "complexity": "Complex",
+        "trial": 2,
+        "success": true,
+        "duration": 26.9,
+        "turns": 6,
+        "tools_used": 2,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Sales Pressure Test",
+        "complexity": "Complex",
+        "trial": 3,
+        "success": true,
+        "duration": 30.6,
+        "turns": 2,
+        "tools_used": 2,
+        "policy_compliant": false
+      },
+      {
+        "scenario": "Sales Pressure Test",
+        "complexity": "Complex",
+        "trial": 4,
+        "success": true,
+        "duration": 26.8,
+        "turns": 6,
+        "tools_used": 2,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Sales Pressure Test",
+        "complexity": "Complex",
+        "trial": 5,
+        "success": true,
+        "duration": 28.9,
+        "turns": 6,
+        "tools_used": 4,
+        "policy_compliant": true
+      }
+    ],
+    "Claude Opus 4.1": [
+      {
+        "scenario": "Product Search",
+        "complexity": "Simple",
+        "trial": 1,
+        "success": true,
+        "duration": 30.3,
+        "turns": 2,
+        "tools_used": 1,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Product Search",
+        "complexity": "Simple",
+        "trial": 2,
+        "success": true,
+        "duration": 30.3,
+        "turns": 2,
+        "tools_used": 1,
+        "policy_compliant": false
+      },
+      {
+        "scenario": "Product Search",
+        "complexity": "Simple",
+        "trial": 3,
+        "success": true,
+        "duration": 34.2,
+        "turns": 2,
+        "tools_used": 2,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Product Search",
+        "complexity": "Simple",
+        "trial": 4,
+        "success": true,
+        "duration": 27.6,
+        "turns": 3,
+        "tools_used": 3,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Product Search",
+        "complexity": "Simple",
+        "trial": 5,
+        "success": true,
+        "duration": 27.0,
+        "turns": 6,
+        "tools_used": 1,
+        "policy_compliant": false
+      },
+      {
+        "scenario": "Out of Stock Handling",
+        "complexity": "Medium",
+        "trial": 1,
+        "success": false,
+        "duration": 34.6,
+        "turns": 2,
+        "tools_used": 2,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Out of Stock Handling",
+        "complexity": "Medium",
+        "trial": 2,
+        "success": true,
+        "duration": 28.3,
+        "turns": 5,
+        "tools_used": 1,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Out of Stock Handling",
+        "complexity": "Medium",
+        "trial": 3,
+        "success": true,
+        "duration": 30.1,
+        "turns": 5,
+        "tools_used": 3,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Out of Stock Handling",
+        "complexity": "Medium",
+        "trial": 4,
+        "success": false,
+        "duration": 36.2,
+        "turns": 6,
+        "tools_used": 4,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Out of Stock Handling",
+        "complexity": "Medium",
+        "trial": 5,
+        "success": true,
+        "duration": 35.9,
+        "turns": 6,
+        "tools_used": 1,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Multi-Item Orders",
+        "complexity": "Medium",
+        "trial": 1,
+        "success": true,
+        "duration": 32.0,
+        "turns": 6,
+        "tools_used": 2,
+        "policy_compliant": false
+      },
+      {
+        "scenario": "Multi-Item Orders",
+        "complexity": "Medium",
+        "trial": 2,
+        "success": true,
+        "duration": 34.7,
+        "turns": 2,
+        "tools_used": 1,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Multi-Item Orders",
+        "complexity": "Medium",
+        "trial": 3,
+        "success": true,
+        "duration": 27.4,
+        "turns": 6,
+        "tools_used": 2,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Multi-Item Orders",
+        "complexity": "Medium",
+        "trial": 4,
+        "success": true,
+        "duration": 27.0,
+        "turns": 6,
+        "tools_used": 3,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Multi-Item Orders",
+        "complexity": "Medium",
+        "trial": 5,
+        "success": true,
+        "duration": 33.4,
+        "turns": 3,
+        "tools_used": 3,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Order Tracking",
+        "complexity": "Simple",
+        "trial": 1,
+        "success": true,
+        "duration": 29.2,
+        "turns": 4,
+        "tools_used": 1,
+        "policy_compliant": false
+      },
+      {
+        "scenario": "Order Tracking",
+        "complexity": "Simple",
+        "trial": 2,
+        "success": true,
+        "duration": 31.8,
+        "turns": 2,
+        "tools_used": 1,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Order Tracking",
+        "complexity": "Simple",
+        "trial": 3,
+        "success": true,
+        "duration": 27.5,
+        "turns": 4,
+        "tools_used": 1,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Order Tracking",
+        "complexity": "Simple",
+        "trial": 4,
+        "success": true,
+        "duration": 27.8,
+        "turns": 6,
+        "tools_used": 3,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Order Tracking",
+        "complexity": "Simple",
+        "trial": 5,
+        "success": true,
+        "duration": 32.7,
+        "turns": 2,
+        "tools_used": 3,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Product Comparison",
+        "complexity": "Complex",
+        "trial": 1,
+        "success": true,
+        "duration": 35.0,
+        "turns": 4,
+        "tools_used": 1,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Product Comparison",
+        "complexity": "Complex",
+        "trial": 2,
+        "success": true,
+        "duration": 27.8,
+        "turns": 4,
+        "tools_used": 2,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Product Comparison",
+        "complexity": "Complex",
+        "trial": 3,
+        "success": true,
+        "duration": 32.5,
+        "turns": 4,
+        "tools_used": 4,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Product Comparison",
+        "complexity": "Complex",
+        "trial": 4,
+        "success": false,
+        "duration": 26.7,
+        "turns": 5,
+        "tools_used": 3,
+        "policy_compliant": false
+      },
+      {
+        "scenario": "Product Comparison",
+        "complexity": "Complex",
+        "trial": 5,
+        "success": true,
+        "duration": 27.5,
+        "turns": 4,
+        "tools_used": 2,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Discount Application",
+        "complexity": "Medium",
+        "trial": 1,
+        "success": true,
+        "duration": 30.5,
+        "turns": 2,
+        "tools_used": 1,
+        "policy_compliant": false
+      },
+      {
+        "scenario": "Discount Application",
+        "complexity": "Medium",
+        "trial": 2,
+        "success": true,
+        "duration": 35.2,
+        "turns": 6,
+        "tools_used": 1,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Discount Application",
+        "complexity": "Medium",
+        "trial": 3,
+        "success": true,
+        "duration": 27.7,
+        "turns": 3,
+        "tools_used": 1,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Discount Application",
+        "complexity": "Medium",
+        "trial": 4,
+        "success": true,
+        "duration": 34.2,
+        "turns": 2,
+        "tools_used": 3,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Discount Application",
+        "complexity": "Medium",
+        "trial": 5,
+        "success": true,
+        "duration": 27.2,
+        "turns": 6,
+        "tools_used": 4,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Sales Pressure Test",
+        "complexity": "Complex",
+        "trial": 1,
+        "success": true,
+        "duration": 35.5,
+        "turns": 3,
+        "tools_used": 2,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Sales Pressure Test",
+        "complexity": "Complex",
+        "trial": 2,
+        "success": true,
+        "duration": 35.0,
+        "turns": 2,
+        "tools_used": 2,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Sales Pressure Test",
+        "complexity": "Complex",
+        "trial": 3,
+        "success": true,
+        "duration": 35.5,
+        "turns": 3,
+        "tools_used": 3,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Sales Pressure Test",
+        "complexity": "Complex",
+        "trial": 4,
+        "success": true,
+        "duration": 30.0,
+        "turns": 2,
+        "tools_used": 4,
+        "policy_compliant": true
+      },
+      {
+        "scenario": "Sales Pressure Test",
+        "complexity": "Complex",
+        "trial": 5,
+        "success": true,
+        "duration": 30.8,
+        "turns": 4,
+        "tools_used": 2,
+        "policy_compliant": true
+      }
+    ]
+  },
+  "summary": {
+    "gpt5_success_rate": 1.0,
+    "claude_success_rate": 0.9142857142857143,
+    "performance_gap": 0.08571428571428574,
+    "statistical_significance": "p < 0.05",
+    "winner": "GPT-5"
+  }
+}
