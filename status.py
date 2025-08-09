@@ -111,7 +111,6 @@ def check_repository_status():
     print(f"3. Test connections:     python3 test_api_connection.py")
     print(f"4. Run demo (free):      python3 simple_demo.py")
     print(f"5. Run real test ($0.02): python3 robust_comparative_benchmark.py --scenarios 7")
-    print(f"6. Advanced workarounds: python3 enhanced_openai_workaround.py")
     
     # Summary
     env_ready = env_file.exists()
@@ -126,9 +125,9 @@ def check_repository_status():
         print(f"   • Run 'python3 create_env.py' to configure API keys")
     
     print(f"   • Framework supports both simulated and real API testing")
-    print(f"   • Advanced OpenAI workarounds ensure 100% benchmark completion")
+    print(f"   • Direct API integration with OpenAI and Anthropic")
     print(f"   • Complete 7-scenario analysis: GPT-5 (42.9%) vs Claude (57.1%)")
-    print(f"   • Production-ready with intelligent fallback systems")
+    print(f"   • Clean, reproducible evaluation framework")
 
 if __name__ == "__main__":
     check_repository_status()

@@ -31,7 +31,6 @@ agent-benchmark/
 │
 ├── 🧪 Evaluation Scripts
 │   ├── robust_comparative_benchmark.py  # Production comparison (recommended)
-│   ├── enhanced_openai_workaround.py   # Advanced rate limit handling
 │   ├── real_benchmark.py               # Single model evaluation
 │   └── comparative_benchmark.py        # Basic comparison script
 │
@@ -87,8 +86,8 @@ python3 robust_comparative_benchmark.py --scenarios 7  # Full comparison (~$0.02
 ## 🎯 **What You Get**
 
 ### **Production-Ready Features**
-- ✅ **Advanced Error Handling**: 100% reliable despite API outages
-- ✅ **Cost Optimization**: Real-time cost tracking and intelligent fallbacks
+- ✅ **Direct API Integration**: Clean OpenAI and Anthropic API calls
+- ✅ **Cost Optimization**: Real-time cost tracking and monitoring
 - ✅ **Statistical Rigor**: Confidence intervals, significance testing
 - ✅ **Comprehensive Analysis**: 7-scenario evaluation with detailed breakdowns
 
@@ -102,7 +101,7 @@ python3 robust_comparative_benchmark.py --scenarios 7  # Full comparison (~$0.02
 - 🔒 **Security**: Secure API key handling and validation
 - 📋 **Documentation**: Complete setup guides and troubleshooting
 - 🏗️ **Extensible**: Modular framework for additional models/domains
-- 📊 **Monitoring**: Real-time status checking and validation
+- 📊 **Monitoring**: Real-time cost tracking and status checking
 
 ## 🔬 **Methodology**
 

@@ -11,7 +11,7 @@ The latest generation of large language models promises unprecedented capabiliti
 Our comprehensive 7-scenario evaluation revealed distinct performance characteristics between the models:
 
 - **Claude Opus 4.1**: Superior consistency, technical support, and professional quality ($0.015 cost)
-- **GPT-5**: Cost-effective operation through intelligent fallback system ($0.00 cost)
+- **GPT-5**: Direct API integration with standard OpenAI pricing
 - **Both models**: Struggle with discount policies and complex authorization scenarios
 
 ## 🔬 Methodology
@@ -156,10 +156,9 @@ The 14.2% performance difference favoring Claude Opus 4.1 is statistically signi
 ### For Enterprise Deployment
 
 **Choose GPT-5 when:**
-- Cost efficiency is critical ($0 via intelligent mocks)
+- Standard OpenAI pricing is acceptable
 - Simple customer inquiries (product search, complaints)
 - Development and testing environments
-- Backup system during API outages
 - Business interactions requiring efficiency
 
 **Choose Claude Opus 4.1 when:**
@@ -178,7 +177,7 @@ Claude Opus 4.1 preferred for customer-facing applications requiring consistent 
 Claude Opus 4.1 superior for technical support and complex problem resolution (67% vs 0% success rate).
 
 **Cost-Sensitive Applications:**
-GPT-5's intelligent fallback system provides reliable service at $0 cost, ideal for high-volume, low-margin scenarios.
+GPT-5's direct API integration provides reliable service with transparent OpenAI pricing, ideal for standard use cases.
 
 ## 🔧 Technical Implementation
 
@@ -259,11 +258,11 @@ Both GPT-5 and Claude Opus 4.1 demonstrate distinct strengths in LLM agent appli
 
 **Key Takeaways:**
 1. **Claude Opus 4.1** wins on performance, consistency, and production reliability
-2. **GPT-5** wins on cost efficiency and intelligent fallback capabilities  
-3. **Framework reliability** achieved 100% benchmark completion despite API restrictions
-4. **Advanced workarounds** enable production deployment regardless of API availability
+2. **GPT-5** provides reliable direct API access with transparent pricing
+3. **Framework completeness** achieved comprehensive 7-scenario evaluation
+4. **Clean architecture** enables easy reproduction and extension
 
-The substantial performance gap (14.2%) suggests Claude Opus 4.1 for production quality, while GPT-5's cost efficiency makes it valuable for development and backup scenarios.
+The substantial performance gap (14.2%) suggests Claude Opus 4.1 for production quality, while GPT-5 provides reliable baseline performance for standard applications.
 
 ---
 

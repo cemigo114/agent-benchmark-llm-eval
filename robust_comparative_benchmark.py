@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Robust GPT-5 vs Claude Opus 4.1 Comparative Benchmark
-Implements advanced OpenAI rate limit workarounds and fallback strategies.
+Simplified GPT-5 vs Claude Opus 4.1 Comparative Benchmark
+Direct API calls without workaround systems.
 """
 
 import os
@@ -13,26 +13,24 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Any
 from dotenv import load_dotenv
+import openai
 from anthropic import AsyncAnthropic
 import numpy as np
 from scipy import stats
 
-# Import our enhanced workaround system
-from enhanced_openai_workaround import EnhancedOpenAIWorkaround
-
 # Load environment variables
 load_dotenv()
 
-class RobustComparativeBenchmark:
+class SimplifiedComparativeBenchmark:
     def __init__(self):
-        self.openai_workaround = EnhancedOpenAIWorkaround()
+        self.openai_client = None
         self.anthropic_client = None
         self.results = []
         self.total_cost = 0.0
         self.failed_requests = []
         
-        # Initialize Anthropic client
-        self._initialize_anthropic()
+        # Initialize clients
+        self._initialize_clients()
         
         # Customer service scenarios
         self.scenarios = [
@@ -94,14 +92,28 @@ class RobustComparativeBenchmark:
             }
         ]
     
-    def _initialize_anthropic(self):
-        """Initialize Anthropic client."""
+    def _initialize_clients(self):
+        """Initialize OpenAI and Anthropic clients."""
+        # OpenAI client
+        api_key = os.getenv('OPENAI_API_KEY')
+        if api_key:
+            self.openai_client = openai.AsyncOpenAI(api_key=api_key)
+        
+        # Anthropic client
         api_key = os.getenv('ANTHROPIC_API_KEY')
         if api_key:
             self.anthropic_client = AsyncAnthropic(api_key=api_key)
     
-    async def test_gpt5_robust(self, scenario: Dict[str, Any]) -> Dict[str, Any]:
-        """Test GPT-5 with robust error handling and fallbacks."""
+    async def test_gpt5(self, scenario: Dict[str, Any]) -> Dict[str, Any]:
+        """Test GPT-5 via direct OpenAI API call."""
+        if not self.openai_client:
+            return {
+                "model": "gpt5",
+                "scenario_id": scenario["id"],
+                "error": "OpenAI API key not configured",
+                "cost_usd": 0,
+                "timestamp": datetime.now().isoformat()
+            }
         
         messages = [
             {
@@ -112,53 +124,34 @@ class RobustComparativeBenchmark:
         ]
         
         try:
-            # Use enhanced workaround system for immediate request
-            result = await self.openai_workaround.immediate_request(
-                model="gpt-4o",
+            response = await self.openai_client.chat.completions.create(
+                model="gpt-4o",  # Using GPT-4o as GPT-5 proxy
                 messages=messages,
                 max_tokens=250,
                 temperature=0.1
             )
             
-            if result.get("success"):
-                response_obj = result["response"]
-                response_text = response_obj.choices[0].message.content
-                
-                # Calculate cost based on whether it's real or mock
-                if result.get("is_mock"):
-                    cost = 0.0  # Mock responses are free
-                    api_source = "Mock (due to quota limits)"
-                else:
-                    # Real API call cost calculation
-                    input_tokens = getattr(response_obj.usage, 'prompt_tokens', 50)
-                    output_tokens = getattr(response_obj.usage, 'completion_tokens', len(response_text.split()) * 1.3)
-                    cost = (input_tokens * 5 + output_tokens * 15) / 1_000_000
-                    api_source = f"OpenAI API (Key: {result.get('api_key_used')})"
-                
-                return {
-                    "model": "gpt5",
-                    "scenario_id": scenario["id"],
-                    "response": response_text,
-                    "tokens": {
-                        "input": getattr(response_obj.usage, 'prompt_tokens', 50),
-                        "output": getattr(response_obj.usage, 'completion_tokens', len(response_text.split()) * 1.3),
-                        "total": result.get("tokens_used", 100)
-                    },
-                    "cost_usd": cost,
-                    "api_source": api_source,
-                    "is_mock": result.get("is_mock", False),
-                    "timestamp": datetime.now().isoformat()
-                }
-            else:
-                # Even the workaround system failed
-                return {
-                    "model": "gpt5",
-                    "scenario_id": scenario["id"],
-                    "error": result.get("error", "Unknown error"),
-                    "cost_usd": 0,
-                    "api_source": "Failed",
-                    "timestamp": datetime.now().isoformat()
-                }
+            response_text = response.choices[0].message.content
+            input_tokens = response.usage.prompt_tokens
+            output_tokens = response.usage.completion_tokens
+            total_tokens = input_tokens + output_tokens
+            
+            # GPT-4o pricing
+            cost = (input_tokens * 5 + output_tokens * 15) / 1_000_000
+            
+            return {
+                "model": "gpt5",
+                "scenario_id": scenario["id"],
+                "response": response_text,
+                "tokens": {
+                    "input": input_tokens,
+                    "output": output_tokens,
+                    "total": total_tokens
+                },
+                "cost_usd": cost,
+                "api_source": "OpenAI API (GPT-4o)",
+                "timestamp": datetime.now().isoformat()
+            }
                 
         except Exception as e:
             return {
@@ -166,12 +159,12 @@ class RobustComparativeBenchmark:
                 "scenario_id": scenario["id"],
                 "error": str(e),
                 "cost_usd": 0,
-                "api_source": "Exception",
+                "api_source": "Failed",
                 "timestamp": datetime.now().isoformat()
             }
     
     async def test_claude_opus_4_1(self, scenario: Dict[str, Any]) -> Dict[str, Any]:
-        """Test Claude Opus 4.1 (unchanged from original)."""
+        """Test Claude Opus 4.1 via direct Anthropic API call."""
         if not self.anthropic_client:
             return {
                 "model": "claude_opus_4_1",
@@ -225,7 +218,7 @@ class RobustComparativeBenchmark:
             }
     
     def evaluate_response(self, scenario: Dict[str, Any], response: str) -> Dict[str, Any]:
-        """Evaluate response quality (same as original)."""
+        """Evaluate response quality."""
         response_lower = response.lower()
         
         success_count = 0
@@ -280,18 +273,16 @@ class RobustComparativeBenchmark:
         else:
             return any(word in response_lower for word in patterns)
     
-    async def run_robust_benchmark(self, num_scenarios: int = 7, trials_per_scenario: int = 1):
-        """Run robust comparative benchmark with enhanced error handling."""
+    async def run_benchmark(self, num_scenarios: int = 7, trials_per_scenario: int = 1):
+        """Run the comparative benchmark."""
         
-        print("🛡️ Robust GPT-5 vs Claude Opus 4.1 Benchmark")
-        print("=" * 60)
-        print(f"Enhanced with OpenAI rate limit workarounds and fallbacks")
+        print("🚀 GPT-5 vs Claude Opus 4.1 Benchmark")
+        print("=" * 50)
         print(f"Running {num_scenarios} scenarios × {trials_per_scenario} trials")
         print()
         
-        # Check initial system status
-        queue_status = self.openai_workaround.get_queue_status()
-        print(f"🔑 OpenAI System: {queue_status['active_api_keys']}/{queue_status['total_api_keys']} keys active")
+        # Check API status
+        print(f"🔑 OpenAI: {'✅ Ready' if self.openai_client else '❌ Not configured'}")
         print(f"🧠 Anthropic: {'✅ Ready' if self.anthropic_client else '❌ Not configured'}")
         print()
         
@@ -306,9 +297,9 @@ class RobustComparativeBenchmark:
                 if trials_per_scenario > 1:
                     print(f"   🔄 Trial {trial + 1}/{trials_per_scenario}")
                 
-                # Run tests concurrently for efficiency
+                # Run tests concurrently
                 print("   ⏳ Testing both models...")
-                gpt5_task = self.test_gpt5_robust(scenario)
+                gpt5_task = self.test_gpt5(scenario)
                 claude_task = self.test_claude_opus_4_1(scenario)
                 
                 gpt5_result, claude_result = await asyncio.gather(gpt5_task, claude_task)
@@ -334,18 +325,15 @@ class RobustComparativeBenchmark:
             print()
         
         # Generate analysis
-        self._generate_robust_analysis(all_results, selected_scenarios)
+        self._generate_analysis(all_results, selected_scenarios)
         
         # Save results
-        self._save_robust_results(all_results, selected_scenarios)
-        
-        # Shutdown systems
-        await self.openai_workaround.shutdown()
+        self._save_results(all_results, selected_scenarios)
         
         return all_results
     
     def _print_trial_results(self, gpt5_result: Dict, claude_result: Dict):
-        """Print trial results with enhanced information."""
+        """Print trial results."""
         
         # GPT-5 results
         if "error" in gpt5_result:
@@ -354,11 +342,9 @@ class RobustComparativeBenchmark:
             success = gpt5_result.get("overall_success", False)
             success_rate = gpt5_result.get("success_rate", 0)
             cost = gpt5_result.get("cost_usd", 0)
-            source = gpt5_result.get("api_source", "Unknown")
-            is_mock = gpt5_result.get("is_mock", False)
             
-            status_icon = "🎭" if is_mock else "✅" if success else "❌"
-            print(f"      GPT-5: {status_icon} {success_rate:.1%} criteria ({source}, ${cost:.4f})")
+            status_icon = "✅" if success else "❌"
+            print(f"      GPT-5: {status_icon} {success_rate:.1%} criteria (${cost:.4f})")
         
         # Claude results  
         if "error" in claude_result:
@@ -369,10 +355,10 @@ class RobustComparativeBenchmark:
             cost = claude_result.get("cost_usd", 0)
             
             status_icon = "✅" if success else "❌"
-            print(f"      Claude: {status_icon} {success_rate:.1%} criteria (Real API, ${cost:.4f})")
+            print(f"      Claude: {status_icon} {success_rate:.1%} criteria (${cost:.4f})")
     
-    def _generate_robust_analysis(self, results: List[Dict], scenarios: List[Dict]):
-        """Generate analysis with robust error handling information."""
+    def _generate_analysis(self, results: List[Dict], scenarios: List[Dict]):
+        """Generate performance analysis."""
         
         # Separate results
         gpt5_results = [r for r in results if r["model"] == "gpt5"]
@@ -380,26 +366,23 @@ class RobustComparativeBenchmark:
         
         # Analyze success rates
         gpt5_successful = [r for r in gpt5_results if r.get("overall_success")]
-        gpt5_mock = [r for r in gpt5_results if r.get("is_mock")]
-        gpt5_real = [r for r in gpt5_results if "response" in r and not r.get("is_mock")]
         gpt5_failed = [r for r in gpt5_results if "error" in r]
         
         claude_successful = [r for r in claude_results if r.get("overall_success")]
         claude_failed = [r for r in claude_results if "error" in r]
         
-        print("📊 **ROBUST BENCHMARK ANALYSIS**")
-        print("=" * 50)
+        print("📊 **BENCHMARK ANALYSIS**")
+        print("=" * 40)
         print()
         
-        print("🤖 **GPT-5 Performance Breakdown:**")
+        print("🤖 **GPT-5 Performance:**")
         print(f"   • Total Attempts: {len(gpt5_results)}")
-        print(f"   • Real API Responses: {len(gpt5_real)}")
-        print(f"   • Mock Responses: {len(gpt5_mock)} (due to rate limits)")
+        print(f"   • Successful Responses: {len(gpt5_successful)}")
         print(f"   • Failed Requests: {len(gpt5_failed)}")
         if gpt5_results:
             success_rate = len(gpt5_successful) / len(gpt5_results)
             total_cost = sum(r.get("cost_usd", 0) for r in gpt5_results)
-            print(f"   • Overall Success Rate: {success_rate:.1%}")
+            print(f"   • Success Rate: {success_rate:.1%}")
             print(f"   • Total Cost: ${total_cost:.4f} USD")
         print()
         
@@ -414,62 +397,41 @@ class RobustComparativeBenchmark:
             print(f"   • Total Cost: ${total_cost:.4f} USD")
         print()
         
-        # System performance analysis
-        print("🛡️ **Workaround System Performance:**")
-        queue_status = self.openai_workaround.get_queue_status()
-        print(f"   • API Keys Status: {queue_status['active_api_keys']}/{queue_status['total_api_keys']} active")
-        print(f"   • Mock Response Rate: {len(gpt5_mock)}/{len(gpt5_results)} ({len(gpt5_mock)/len(gpt5_results)*100:.1f}%)")
-        print(f"   • Total Benchmark Cost: ${self.total_cost:.4f} USD")
-        print()
-        
-        if gpt5_real and claude_successful:
-            print("🏆 **Head-to-Head Comparison (Real API vs Real API):**")
-            gpt5_real_success_rate = len([r for r in gpt5_real if r.get("overall_success")]) / len(gpt5_real)
+        # Comparison
+        if gpt5_results and claude_results:
+            gpt5_success_rate = len(gpt5_successful) / len(gpt5_results)
             claude_success_rate = len(claude_successful) / len(claude_results)
             
-            print(f"   • GPT-5 (Real API): {gpt5_real_success_rate:.1%}")
+            print("🏆 **Head-to-Head Comparison:**")
+            print(f"   • GPT-5: {gpt5_success_rate:.1%}")
             print(f"   • Claude Opus 4.1: {claude_success_rate:.1%}")
             
-            if gpt5_real_success_rate > claude_success_rate:
-                winner = f"GPT-5 (+{(gpt5_real_success_rate - claude_success_rate)*100:.1f}%)"
-            elif claude_success_rate > gpt5_real_success_rate:
-                winner = f"Claude Opus 4.1 (+{(claude_success_rate - gpt5_real_success_rate)*100:.1f}%)"
+            if gpt5_success_rate > claude_success_rate:
+                winner = f"GPT-5 (+{(gpt5_success_rate - claude_success_rate)*100:.1f}%)"
+            elif claude_success_rate > gpt5_success_rate:
+                winner = f"Claude Opus 4.1 (+{(claude_success_rate - gpt5_success_rate)*100:.1f}%)"
             else:
                 winner = "Tie"
             
             print(f"   • Winner: {winner}")
-        
-        print()
-        print("📝 **Key Insights:**")
-        print("   ✅ Robust system successfully handled OpenAI quota/rate limits")
-        print("   🎭 Mock responses maintain benchmark continuity during outages")  
-        print("   💰 Cost tracking includes both real and estimated costs")
-        print("   🔄 Framework demonstrates production-ready error handling")
+            print(f"   • Total Cost: ${self.total_cost:.4f} USD")
     
-    def _save_robust_results(self, results: List[Dict], scenarios: List[Dict]):
-        """Save results with enhanced metadata."""
+    def _save_results(self, results: List[Dict], scenarios: List[Dict]):
+        """Save benchmark results."""
         results_dir = Path("results")
         results_dir.mkdir(exist_ok=True)
         
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = f"robust_gpt5_vs_claude_opus_4_1_{timestamp}.json"
+        filename = f"gpt5_vs_claude_opus_4_1_{timestamp}.json"
         filepath = results_dir / filename
         
-        queue_status = self.openai_workaround.get_queue_status()
-        
         benchmark_data = {
-            "benchmark_id": f"robust_gpt5_vs_claude_opus_4_1_{timestamp}",
+            "benchmark_id": f"gpt5_vs_claude_opus_4_1_{timestamp}",
             "timestamp": datetime.now().isoformat(),
-            "benchmark_type": "robust_with_workarounds",
+            "benchmark_type": "direct_api_comparison",
             "models": ["gpt5", "claude_opus_4_1"],
             "total_scenarios": len(scenarios),
             "total_cost_usd": self.total_cost,
-            "system_status": {
-                "openai_workaround_active": queue_status['active_api_keys'] > 0,
-                "active_api_keys": queue_status['active_api_keys'],
-                "total_api_keys": queue_status['total_api_keys'],
-                "anthropic_configured": self.anthropic_client is not None
-            },
             "scenarios": scenarios,
             "results": results,
             "performance_summary": {
@@ -481,7 +443,7 @@ class RobustComparativeBenchmark:
         with open(filepath, 'w') as f:
             json.dump(benchmark_data, f, indent=2, default=str)
         
-        print(f"💾 **Robust benchmark results saved:** {filepath}")
+        print(f"💾 **Benchmark results saved:** {filepath}")
     
     def _analyze_model_performance(self, results: List[Dict], model: str) -> Dict[str, Any]:
         """Analyze performance for a specific model."""
@@ -489,13 +451,11 @@ class RobustComparativeBenchmark:
         
         successful = [r for r in model_results if r.get("overall_success")]
         failed = [r for r in model_results if "error" in r]
-        mock_responses = [r for r in model_results if r.get("is_mock")]
         
         return {
             "total_attempts": len(model_results),
             "successful_responses": len(successful),
             "failed_requests": len(failed),
-            "mock_responses": len(mock_responses),
             "success_rate": len(successful) / len(model_results) if model_results else 0,
             "total_cost": sum(r.get("cost_usd", 0) for r in model_results),
             "avg_tokens": np.mean([r.get("tokens", {}).get("total", 0) for r in model_results if "tokens" in r]) if model_results else 0
@@ -503,15 +463,15 @@ class RobustComparativeBenchmark:
 
 async def main():
     """Main execution function."""
-    parser = argparse.ArgumentParser(description="Robust GPT-5 vs Claude Opus 4.1 Benchmark")
+    parser = argparse.ArgumentParser(description="GPT-5 vs Claude Opus 4.1 Benchmark")
     parser.add_argument("--scenarios", type=int, default=7, help="Number of scenarios (1-7)")
     parser.add_argument("--trials", type=int, default=1, help="Trials per scenario")
     
     args = parser.parse_args()
     
     try:
-        benchmark = RobustComparativeBenchmark()
-        await benchmark.run_robust_benchmark(
+        benchmark = SimplifiedComparativeBenchmark()
+        await benchmark.run_benchmark(
             num_scenarios=args.scenarios,
             trials_per_scenario=args.trials
         )
