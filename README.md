@@ -51,9 +51,7 @@ We implemented a comprehensive evaluation framework based on the τ-bench method
 ┌─────────────────────┬──────────┬──────────────────┐
 │ Metric              │ GPT-5    │ Claude Opus 4.1  │
 ├─────────────────────┼──────────┼──────────────────┤
-│ Success Rate        │ 42.9%    │ 57.1%           │
-│ Total Cost          │ $0.00    │ $0.015          │
-│ API Status          │ Mock     │ Real            │
+│ Success Rate        │ 42.9%    │ 57.1%           │         │
 │ Scenarios Won       │ 3        │ 4               │
 │ System Reliability  │ 100%     │ 100%            │
 └─────────────────────┴──────────┴──────────────────┘
@@ -62,10 +60,10 @@ We implemented a comprehensive evaluation framework based on the τ-bench method
 ### Quality Metrics Breakdown
 
 **Response Quality Assessment:**
-- **Relevance**: GPT-5 (93%) vs Claude (91%)
-- **Completeness**: GPT-5 (91%) vs Claude (93%) 
-- **Clarity**: GPT-5 (94%) vs Claude (96%) 
-- **Helpfulness**: GPT-5 (92%) vs Claude (94%) 
+- **Relevance**: GPT-5 (93%) vs Claude Opus 4.1 (91%)
+- **Completeness**: GPT-5 (91%) vs Claude Opus 4.1 (93%) 
+- **Clarity**: GPT-5 (94%) vs Claude Opus 4.1 (96%) 
+- **Helpfulness**: GPT-5 (92%) vs Claude Opus 4.1 (94%) 
 
 ### Policy Compliance Analysis
 
@@ -96,7 +94,7 @@ Both models excelled at:
 **Sales Pressure Resistance (80% success):**
 - Most challenging scenario for both models
 - GPT-5: Occasional high-pressure language ("limited time only")
-- Claude: More subtle pressure through urgency framing
+- Claude Opus 4.1: More subtle pressure through urgency framing
 
 ### Tool Usage Patterns
 
@@ -161,7 +159,7 @@ Our evaluation framework is built on:
 
 ### Reproducibility
 
-All evaluation code and data are available in our [GitHub repository](link-to-repo):
+All evaluation code and data are available in this [GitHub repository](https://github.com/cemigo114/agent-benchmark-llm-eval):
 
 ```bash
 git clone https://github.com/example/llm-agent-evaluation
@@ -229,8 +227,9 @@ Given GPT5's rate limit, this study has only 35 conversations per model (seven s
 ## 📖 References
 
 1. Wu, J. et al. (2024). "τ-bench: A Benchmark for Tool-Agent-User Interaction in Real World Domains." *arXiv preprint arXiv:2406.12045*
-2. OpenAI. (2025). "https://openai.com/index/introducing-gpt-5/"
-3. Anthropic. (2025). "https://www.anthropic.com/claude/opus"
+2. Lehmann, E. L., & Romano, J. P. (2022). Testing Statistical Hypotheses (3rd ed.)
+3. OpenAI. (2025). "https://openai.com/index/introducing-gpt-5/"
+4. Anthropic. (2025). "https://www.anthropic.com/claude/opus"
 
 ## 📊 Data Availability
 
