@@ -108,7 +108,7 @@ Both models excelled at:
 **Claude Opus 4.1 Tool Usage:**
 - Average 2.3 tools per conversation  
 - More thorough information gathering
-- 97% accuracy in parameter selection 🏆
+- 97% accuracy in parameter selection 
 
 ### Conversation Style Differences
 
@@ -235,7 +235,7 @@ Given GPT5's rate limit, this study has only 35 conversations per model (seven s
 ## 📊 Data Availability
 
 All evaluation data, code, and detailed results are available at:
-- **Repository**: [github.com/example/llm-agent-evaluation](link)
+- **Repository**: [https://github.com/cemigo114/agent-benchmark-llm-eval](link)
 - **Reproducibility**: Complete evaluation environment provided
 
 ---
